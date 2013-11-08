@@ -10,14 +10,14 @@ memos = {}
 
 route_matcher = Vertx::RouteMatcher.new
 
-route_matcher.get('/memos') do |request|
+route_matcher.get('/api/memos') do |request|
   request.response.chunked = true
   request.response.put_header('Content-Type', 'application/json')
   request.response.write_str(JSON.generate(memos.values))
   request.response.end
 end
 
-route_matcher.get_re('/memos/(\d+)') do |request|
+route_matcher.get_re('/api/memos/(\d+)') do |request|
   request.response.chunked = true
   request.response.put_header('Content-Type', 'application/json')
   memo_id = request.params['param0'].to_i
@@ -25,7 +25,7 @@ route_matcher.get_re('/memos/(\d+)') do |request|
   request.response.end
 end
 
-route_matcher.post('/memos') do |request|
+route_matcher.post('/api/memos') do |request|
   body = Vertx::Buffer.create(0)
 
   request.data_handler do |buffer|
@@ -45,7 +45,7 @@ route_matcher.post('/memos') do |request|
   end
 end
 
-route_matcher.get_re('/memos/(\d+)/tags') do |request|
+route_matcher.get_re('/api/memos/(\d+)/tags') do |request|
   request.response.chunked = true
   request.response.put_header('Content-Type', 'application/json')
   memo_id = request.params['param0'].to_i
@@ -53,7 +53,7 @@ route_matcher.get_re('/memos/(\d+)/tags') do |request|
   request.response.end
 end
 
-route_matcher.post_re('/memos/(\d+)/tags') do |request|
+route_matcher.post_re('/api/memos/(\d+)/tags') do |request|
   body = Vertx::Buffer.create(0)
 
   request.data_handler do |buffer|
@@ -75,4 +75,4 @@ route_matcher.post_re('/memos/(\d+)/tags') do |request|
   end
 end
 
-server.request_handler(route_matcher).listen(8080, '0.0.0.0')
+server.request_handler(route_matcher).listen(3000, '0.0.0.0')
