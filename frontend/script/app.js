@@ -12,25 +12,40 @@ config(['$routeProvider', function($routeProvider) {
 }]).controller("HomeCtrl", function($scope, $http) 
 {
 	$scope.words = [];
-	$scope.tmp = $http.get("data/cat-in-the-hat.txt").success(
-			function (data) {
-				$scope.words = data.split(" "); 
-			}
+
+	$scope.tmp = $http.get("data/memos").success(
+		function (data) {
+			$scope.words = data.map(function(d) {
+				return {
+					text: d.name,
+					extra: { category: d.category, id: 1 }
+				};
+			});
+		}
 	);
-	//$scope.words = [ "Jean", "Simon", "Benjamin", "Nicolas", "Olivier", "Karim" ];
+
+	/*$scope.tmp = $http.get("data/cat-in-the-hat.txt").success(
+		function (data) {
+			$scope.words = data.split(" ");
+		}
+	);*/
+
+	$scope.wordClick = function(element) {
+		console.log(element);
+	};
 
 	$scope.add = function() {
 		$scope.words.push($scope.name);
 	};
 
 	$scope.$watch('name', function(name) {
-		if (name.length > 3)
+		if (name && name.length > 3)
 		{
 			console.log(name);
 		}
 		else
 		{
-			console.log('Benj aime les poneys');
+			console.log('Type longer name!');
 		}
 
 	});

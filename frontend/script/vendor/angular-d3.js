@@ -9550,10 +9550,18 @@ angular.module('d3').directive('wordcloud', [
             width,
             height
           ]).words(words.map(function (d) {
-            return {
-              text: d,
-              size: Math.random() * fontSize
-            };
+            if (typeof d == 'object') {
+              return {
+                text: d.text,
+                size: Math.random() * fontSize,
+                extra: d.extra
+              };
+            } else {
+              return {
+                text: d,
+                size: Math.random() * fontSize
+              };
+            }
           })).rotate(function () {
             return ~~(Math.random() * 2) * -90;
           }).font(fontFamily).fontSize(function (d) {
