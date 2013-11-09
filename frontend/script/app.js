@@ -31,7 +31,7 @@ config(['$routeProvider', function($routeProvider) {
 	);*/
 
 	$scope.wordClick = function(element) {
-		console.log(element);
+		alert("You click on "+element.text+" which is a "+element.extra.category+" with ID "+element.extra.id);
 	};
 
 	$scope.add = function() {
