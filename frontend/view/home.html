@@ -4,6 +4,6 @@
 	<li ng-repeat="n in words" ng-animate="'animate'" color-me>{{ n | toUpperCase }}</li>
 </ul>
 -->
-<div style="border: solid 1px #CCC;height:500px;width:700px;border-radius:3px;box-shadow:0 0 10px rgba(0,0,0,.3);margin: 0 auto 0 auto;margin-top:50px">
+<div class="wordcloud-container">
 	<wordcloud words="words" height="500" width="700" on-click="wordClick(element)" ></wordcloud>
 </div>
