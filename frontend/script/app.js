@@ -15,10 +15,11 @@ config(['$routeProvider', function($routeProvider) {
 
 	$scope.tmp = $http.get("data/memos").success(
 		function (data) {
+			var i = 0;
 			$scope.words = data.map(function(d) {
 				return {
 					text: d.name,
-					extra: { category: d.category, id: 1 }
+					extra: { category: d.category, id: i++ }
 				};
 			});
 		}
@@ -31,7 +32,9 @@ config(['$routeProvider', function($routeProvider) {
 	);*/
 
 	$scope.wordClick = function(element) {
-		alert("You click on "+element.text+" which is a "+element.extra.category+" with ID "+element.extra.id);
+		$scope.$apply(function() {
+			$scope.word = element;
+		});
 	};
 
 	$scope.add = function() {

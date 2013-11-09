@@ -1,3 +1,7 @@
+body {
+	color: #7F7F7F;
+}
+
 .animate-enter
 {
 	transition: 1s linear all;
@@ -25,4 +29,11 @@
 
 .wordcloud-container text:hover {
 	opacity: .7 !important;
+}
+
+.wordcloud-selected {
+	padding-top: 20px;
+	width: 500px;
+	text-align: center;
+	margin: 0 auto 0 auto;
 }

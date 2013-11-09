@@ -7,3 +7,6 @@
 <div class="wordcloud-container">
 	<wordcloud words="words" height="500" width="700" on-click="wordClick(element)" ></wordcloud>
 </div>
+<div class="wordcloud-selected">
+	<h2 ng-if="word">{{ word.text }} ({{ word.extra.id }}, {{ word.extra.category }})</h2>
+</div>
