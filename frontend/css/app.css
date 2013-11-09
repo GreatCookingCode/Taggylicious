@@ -1,5 +1,6 @@
 body {
 	color: #7F7F7F;
+	background-color: #DFDFDF;
 }
 
 .animate-enter
@@ -15,6 +16,7 @@ body {
 
 .wordcloud-container {
 	border: solid 1px #CCC;
+	background-color: #FFFFFF;
 	height: 500px;
 	width: 700px;
 	border-radius: 3px;
